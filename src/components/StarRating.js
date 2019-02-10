@@ -8,22 +8,25 @@ class StarRating extends Component {
     rating: 0
   }
 
-  // Write a function that returns 5 Star components
+  // returns 5 Star components
   genStars = () => {
     const stars = [];
     for (let i=0; i < 5; i++) {
-      stars.push(<Star />);
+      stars.push(<Star score={i + 1} updateRating={this.updateRating} />);
     }
     return stars;
   }
 
-  // Write an event handler that updates the rating state.
-  // Pass the function to a Star component via props
-
+  // updates the rating state.
+  updateRating = score => {
+    this.setState( () => {
+      return {
+        rating: score
+      };
+    });
+  }
 
   render() {
-    // create an array of stars
-
     return (
       <ul className="course--stars">
         {/* Render the Star components */}
