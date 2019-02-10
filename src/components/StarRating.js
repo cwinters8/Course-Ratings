@@ -4,7 +4,9 @@ import Star from './Star';
 class StarRating extends Component {
 
   // Initialize a 'rating' state
-
+  state = {
+    rating: 0
+  }
 
   // Write a function that returns 5 Star components
 
@@ -14,9 +16,16 @@ class StarRating extends Component {
 
 
   render() {
+    // create an array of stars
+    const stars = [];
+    for (let i=0; i < 5; i++) {
+      stars.push(<Star />);
+    }
+
     return (
       <ul className="course--stars">
         {/* Render the Star components */}
+        {stars}
       </ul>
     );
   }
