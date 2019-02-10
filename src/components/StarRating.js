@@ -12,7 +12,8 @@ class StarRating extends Component {
   genStars = () => {
     const stars = [];
     for (let i=0; i < 5; i++) {
-      stars.push(<Star score={i + 1} updateRating={this.updateRating} />);
+      const id = i + 1;
+      stars.push(<Star key={id} score={id} index={i} updateRating={this.updateRating} />);
     }
     return stars;
   }
