@@ -13,18 +13,24 @@ class StarRating extends Component {
     const stars = [];
     for (let i=0; i < 5; i++) {
       const id = i + 1;
-      stars.push(<Star key={id} score={id} index={i} updateRating={this.updateRating} />);
+      stars.push(<Star 
+        key={id} 
+        score={id} 
+        index={i} 
+        isSelected={this.state.rating > i}
+        updateRating={this.updateRating}
+      />);
     }
     return stars;
   }
 
   // updates the rating state.
   updateRating = score => {
-    this.setState( () => {
-      return {
-        rating: score
-      };
-    });
+    if (this.state.rating === score) {
+      this.setState({rating: 0});
+    } else {
+      this.setState({rating: score});
+    }
   }
 
   render() {
